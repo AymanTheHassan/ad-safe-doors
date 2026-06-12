@@ -82,7 +82,6 @@
       '<header class="site-header" id="siteHeader"><div class="container"><nav class="nav">' +
         '<a class="brand" href="index.html">' +
           '<img src="assets/images/logo.png" alt="Adsafe Doors Sydney logo">' +
-          '<span class="brand-text"><strong>Adsafe Doors</strong><small>Sydney · Since 1992</small></span>' +
         "</a>" +
         '<ul class="menu">' + items + "</ul>" +
         '<div class="nav-cta">' +

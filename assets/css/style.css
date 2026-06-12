@@ -156,23 +156,21 @@ section { position: relative; }
   gap: 18px;
   min-height: 78px;
 }
-.brand { display: flex; align-items: center; gap: 12px; }
-.brand img { height: 50px; width: auto; }
-.brand-text { display: flex; flex-direction: column; line-height: 1.1; }
-.brand-text strong { color: var(--navy); font-size: 1.18rem; letter-spacing: -.01em; }
-.brand-text small { color: var(--muted); font-size: .74rem; letter-spacing: .04em; text-transform: uppercase; }
+.brand { display: flex; align-items: center; flex-shrink: 0; margin-right: 8px; }
+.brand img { height: 46px; width: auto; }
 
-.menu { display: flex; align-items: center; gap: 4px; list-style: none; margin: 0; padding: 0; }
+.menu { display: flex; align-items: center; gap: 2px; list-style: none; margin: 0; padding: 0; flex: 1; justify-content: center; min-width: 0; }
 .menu > li { position: relative; }
 .menu > li > a {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  padding: 10px 13px;
+  gap: 4px;
+  padding: 8px 10px;
   color: var(--ink);
   font-weight: 600;
-  font-size: 0.96rem;
+  font-size: 0.875rem;
   border-radius: 8px;
+  white-space: nowrap;
 }
 .menu > li > a:hover, .menu > li.current > a { color: var(--blue); background: var(--bg-soft); }
 .menu .caret { width: 9px; height: 9px; opacity: .6; }
@@ -205,9 +203,19 @@ section { position: relative; }
 }
 .dropdown a:hover { background: var(--bg-soft); color: var(--blue); }
 
-.nav-cta { display: flex; align-items: center; gap: 12px; }
-.nav-phone { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; color: var(--navy); white-space: nowrap; }
+.nav-cta { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+.nav-cta .btn { padding: 10px 18px; font-size: 0.875rem; }
+.nav-phone { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; color: var(--navy); white-space: nowrap; font-size: 0.9rem; }
 .nav-phone span { font-size: .72rem; color: var(--muted); display: block; font-weight: 600; text-transform: uppercase; letter-spacing: .05em; }
+
+@media (max-width: 1180px) {
+  .nav-phone span { display: none; }
+  .menu > li > a { padding: 8px 8px; font-size: 0.84rem; }
+}
+
+@media (max-width: 1020px) {
+  .nav-phone { display: none; }
+}
 
 .burger {
   display: none;
