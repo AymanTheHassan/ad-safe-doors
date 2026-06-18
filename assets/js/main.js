@@ -8,15 +8,12 @@
 
   /* ---------- Navigation model ---------- */
   var NAV = [
-    { label: "Home", href: "index.html", key: "home" },
     {
-      label: "Start Here", href: "start-here.html", key: "start",
+      label: "Home", href: "index.html", key: "home",
       children: [
-        { label: "Start Here", href: "start-here.html" },
-        { label: "Disaster Problems", href: "disaster-problems.html" },
-        { label: "Repair or Replace?", href: "repair-or-replace.html" },
-        { label: "Common Door Brands", href: "common-door-brands.html" },
-        { label: "Identify Your Door", href: "identify-your-door.html" }
+        { label: "Home", href: "index.html" },
+        { label: "Parramatta", href: "sliding-door-repairs-parramatta.html" },
+        { label: "Blacktown", href: "sliding-door-repairs-blacktown.html" }
       ]
     },
     {
@@ -31,15 +28,6 @@
     },
     { label: "Free Quote", href: "free-quote.html", key: "quote" },
     { label: "Videos", href: "videos.html", key: "videos" },
-    {
-      label: "FAQs", href: "faqs.html", key: "faqs",
-      children: [
-        { label: "FAQs Overview", href: "faqs.html" },
-        { label: "Door Repairs Sydney FAQ", href: "door-repairs-faq.html" },
-        { label: "Sliding Door Repairs FAQ", href: "sliding-door-repairs-faq.html" },
-        { label: "Door Closer FAQ", href: "door-closer-faq.html" }
-      ]
-    },
     { label: "Testimonials", href: "testimonials.html", key: "testimonials" },
     {
       label: "About Us", href: "about.html", key: "about",
@@ -114,12 +102,14 @@
             '<li><a href="free-quote.html">Free Quote</a></li>' +
           "</ul></div>" +
           '<div><h4>Quick Links</h4><ul class="footer-links">' +
-            '<li><a href="start-here.html">Start Here</a></li>' +
             '<li><a href="videos.html">Videos</a></li>' +
-            '<li><a href="faqs.html">FAQs</a></li>' +
             '<li><a href="testimonials.html">Testimonials</a></li>' +
             '<li><a href="about.html">About Us</a></li>' +
             '<li><a href="contact.html">Contact</a></li>' +
+          "</ul>" +
+          '<h4 style="margin-top:20px">Service Areas</h4><ul class="footer-links">' +
+            '<li><a href="sliding-door-repairs-parramatta.html">Parramatta</a></li>' +
+            '<li><a href="sliding-door-repairs-blacktown.html">Blacktown</a></li>' +
           "</ul></div>" +
           '<div><h4>Get In Touch</h4><ul class="footer-links footer-contact">' +
             '<li>📞 <a href="' + D.phoneHref + '">' + D.phone + "</a></li>" +
@@ -222,5 +212,43 @@
       form.reset();
       if (ok) ok.scrollIntoView({ behavior: "smooth", block: "center" });
     });
+  });
+
+  /* ---------- Scroll-reveal animations ---------- */
+  var reveals = document.querySelectorAll("[data-reveal]");
+  if (reveals.length && "IntersectionObserver" in window) {
+    var revealObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.classList.add("revealed");
+          revealObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+    reveals.forEach(function (el) { revealObs.observe(el); });
+  }
+
+  /* ---------- Counter animation ---------- */
+  document.querySelectorAll("[data-count]").forEach(function (el) {
+    var target = parseInt(el.getAttribute("data-count"), 10);
+    var counted = false;
+    var obs = new IntersectionObserver(function (entries) {
+      if (entries[0].isIntersecting && !counted) {
+        counted = true;
+        var start = 0;
+        var dur = 1800;
+        var t0 = null;
+        function tick(ts) {
+          if (!t0) t0 = ts;
+          var p = Math.min((ts - t0) / dur, 1);
+          var ease = 1 - Math.pow(1 - p, 3);
+          el.textContent = Math.round(ease * target);
+          if (p < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+        obs.unobserve(el);
+      }
+    }, { threshold: 0.5 });
+    obs.observe(el);
   });
 })();
