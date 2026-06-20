@@ -62,9 +62,9 @@
           '<span>📍 Servicing all of Sydney Metro</span>' +
         "</div>" +
         '<div class="topbar-social">' +
-          '<a href="' + D.facebook + '" target="_blank" rel="noopener">Facebook</a>' +
-          '<a href="' + D.youtube + '" target="_blank" rel="noopener">YouTube</a>' +
-          '<a href="' + D.reviewsUrl + '" target="_blank" rel="noopener">★ ' + D.rating + " Google</a>" +
+          '<a href="' + D.facebook + '" target="_blank" rel="noopener noreferrer">Facebook</a>' +
+          '<a href="' + D.youtube + '" target="_blank" rel="noopener noreferrer">YouTube</a>' +
+          '<a href="' + D.reviewsUrl + '" target="_blank" rel="noopener noreferrer">★ ' + D.rating + " Google</a>" +
         "</div>" +
       "</div></div>" +
       '<header class="site-header" id="siteHeader"><div class="container"><nav class="nav">' +
@@ -89,9 +89,9 @@
             '<img src="assets/images/logo.png" alt="Adsafe Doors Sydney">' +
             "<p>Sydney's premier sliding door repair specialists. Privately owned, family run, and fixing doors across the Sydney metro area since 1992.</p>" +
             '<div class="footer-social">' +
-              '<a href="' + D.facebook + '" target="_blank" rel="noopener" aria-label="Facebook">f</a>' +
-              '<a href="' + D.youtube + '" target="_blank" rel="noopener" aria-label="YouTube">▶</a>' +
-              '<a href="' + D.reviewsUrl + '" target="_blank" rel="noopener" aria-label="Google Reviews">G</a>' +
+              '<a href="' + D.facebook + '" target="_blank" rel="noopener noreferrer" aria-label="Facebook">f</a>' +
+              '<a href="' + D.youtube + '" target="_blank" rel="noopener noreferrer" aria-label="YouTube">▶</a>' +
+              '<a href="' + D.reviewsUrl + '" target="_blank" rel="noopener noreferrer" aria-label="Google Reviews">G</a>' +
             "</div>" +
           "</div>" +
           '<div><h4>Services</h4><ul class="footer-links">' +
@@ -149,22 +149,36 @@
   }
 
   /* ---------- YouTube helpers ---------- */
-  function thumb(id) { return "https://i.ytimg.com/vi/" + id + "/hqdefault.jpg"; }
+  function safeText(value) {
+    return String(value == null ? "" : value).replace(/[&<>"']/g, function (ch) {
+      return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[ch];
+    });
+  }
+  function safeVideoId(id) {
+    id = String(id == null ? "" : id);
+    return /^[a-zA-Z0-9_-]{11}$/.test(id) ? id : "";
+  }
+  function thumb(id) { return "https://i.ytimg.com/vi/" + safeVideoId(id) + "/hqdefault.jpg"; }
   var playSvg = '<svg viewBox="0 0 68 48"><path d="M66.5 7.7a8.6 8.6 0 0 0-6-6C55.3 0 34 0 34 0S12.7 0 7.5 1.6a8.6 8.6 0 0 0-6 6A90 90 0 0 0 0 24a90 90 0 0 0 1.5 16.3 8.6 8.6 0 0 0 6 6C12.7 48 34 48 34 48s21.3 0 26.5-1.6a8.6 8.6 0 0 0 6-6A90 90 0 0 0 68 24a90 90 0 0 0-1.5-16.3z" fill="#f00"/><path d="M27 34.5 45 24 27 13.5z" fill="#fff"/></svg>';
 
   /* ---------- Render video grids (lazy embed on click) ---------- */
   function renderVideos(container, vids) {
     container.innerHTML = vids.map(function (v) {
-      return '<article class="video-card" data-id="' + v.id + '">' +
-        '<div class="video-thumb"><img loading="lazy" src="' + thumb(v.id) + '" alt="' + v.title + '">' +
+      var id = safeVideoId(v.id);
+      var title = safeText(v.title);
+      if (!id) return "";
+      return '<article class="video-card" data-id="' + id + '">' +
+        '<div class="video-thumb"><img loading="lazy" src="' + thumb(id) + '" alt="' + title + '">' +
         '<span class="play">' + playSvg + "</span></div>" +
-        '<div class="video-meta"><h3>' + v.title + "</h3></div></article>";
+        '<div class="video-meta"><h3>' + title + "</h3></div></article>";
     }).join("");
     container.querySelectorAll(".video-card").forEach(function (card) {
       card.addEventListener("click", function () {
         var id = card.getAttribute("data-id");
         var t = card.querySelector(".video-thumb");
-        t.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0" title="Adsafe Doors video" allow="accelerated-rotation; autoplay; encrypted-media" allowfullscreen></iframe>';
+        id = safeVideoId(id);
+        if (!id) return;
+        t.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0" title="Adsafe Doors video" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" sandbox="allow-scripts allow-same-origin allow-presentation allow-popups" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe>';
       });
     });
   }
@@ -186,11 +200,15 @@
     var list = (D.reviews || []).slice();
     if (limit) list = list.slice(0, limit);
     el.innerHTML = list.map(function (r) {
+      var name = safeText(r.name);
+      var meta = safeText(r.meta);
+      var text = safeText(r.text);
+      var initial = safeText(String(r.name || "?").charAt(0).toUpperCase());
       return '<article class="review">' +
         '<div class="stars">' + stars(5) + "</div>" +
-        "<p>“" + r.text + "”</p>" +
-        '<div class="reviewer"><span class="avatar">' + r.name.charAt(0).toUpperCase() + "</span>" +
-        "<span><b>" + r.name + "</b><small>" + r.meta + "</small></span>" +
+        "<p>“" + text + "”</p>" +
+        '<div class="reviewer"><span class="avatar">' + initial + "</span>" +
+        "<span><b>" + name + "</b><small>" + meta + "</small></span>" +
         '<svg class="gicon" viewBox="0 0 48 48"><path fill="#4285F4" d="M45 24.5c0-1.6-.1-3.1-.4-4.5H24v8.5h11.8c-.5 2.7-2 5-4.3 6.6v5.5h7C42.6 36.7 45 31 45 24.5z"/><path fill="#34A853" d="M24 46c5.8 0 10.6-1.9 14.2-5.2l-7-5.5c-1.9 1.3-4.4 2.1-7.2 2.1-5.5 0-10.2-3.7-11.9-8.7H4.9v5.7C8.5 41.6 15.7 46 24 46z"/><path fill="#FBBC05" d="M12.1 28.7c-.4-1.3-.7-2.7-.7-4.2s.3-2.9.7-4.2v-5.7H4.9C3.4 17.7 2.5 20.7 2.5 24s.9 6.3 2.4 9.1l7.2-4.4z"/><path fill="#EA4335" d="M24 11.1c3.1 0 5.9 1.1 8.1 3.2l6.1-6.1C34.6 4.7 29.8 2.5 24 2.5 15.7 2.5 8.5 6.9 4.9 14.9l7.2 5.7c1.7-5 6.4-8.7 11.9-8.7z"/></svg>' +
         "</div></article>";
     }).join("");
