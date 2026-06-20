@@ -1,0 +1,4 @@
+# Force HTTPS on all routes (Netlify handles this at the edge)
+http://adsafedoors.com.au/*  https://adsafedoors.com.au/:splat  301!
+http://www.adsafedoors.com.au/*  https://adsafedoors.com.au/:splat  301!
+https://www.adsafedoors.com.au/*  https://adsafedoors.com.au/:splat  301!

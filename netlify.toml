@@ -1,17 +1,59 @@
 [build]
   publish = "."
+  edge_functions = "netlify/edge-functions"
 
+# ──────────────────────────────────────────────────
+# LAYER 7 — Application security headers (all pages)
+# ──────────────────────────────────────────────────
 [[headers]]
   for = "/*"
   [headers.values]
+    # Clickjacking protection
     X-Frame-Options = "DENY"
+
+    # MIME-sniffing protection
     X-Content-Type-Options = "nosniff"
-    X-XSS-Protection = "0"
-    X-Permitted-Cross-Domain-Policies = "none"
-    X-DNS-Prefetch-Control = "off"
+
+    # Referrer leakage control
     Referrer-Policy = "strict-origin-when-cross-origin"
+
+    # HSTS — force HTTPS for 1 year + subdomains + preload-ready
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+
+    # XSS filter (legacy browsers)
+    X-XSS-Protection = "1; mode=block"
+
+    # Restrict browser features the site doesn't use
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=()"
+
+    # Cross-Origin isolation headers
     Cross-Origin-Opener-Policy = "same-origin"
     Cross-Origin-Resource-Policy = "same-origin"
-    Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
-    Permissions-Policy = "accelerometer=(), autoplay=(self \"https://www.youtube-nocookie.com\"), camera=(), cross-origin-isolated=(), display-capture=(), encrypted-media=(self \"https://www.youtube-nocookie.com\"), fullscreen=(self \"https://www.youtube-nocookie.com\" \"https://www.google.com\"), geolocation=(), gyroscope=(), hid=(), idle-detection=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(self), publickey-credentials-get=(), screen-wake-lock=(), serial=(), usb=(), xr-spatial-tracking=()"
-    Content-Security-Policy = "default-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://i.ytimg.com; frame-src https://www.youtube-nocookie.com https://www.google.com; connect-src 'self'; manifest-src 'self'; upgrade-insecure-requests"
+
+    # Content Security Policy — strict allowlist
+    Content-Security-Policy = """
+      default-src 'self';
+      script-src 'self' 'unsafe-inline';
+      style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+      font-src 'self' https://fonts.gstatic.com;
+      img-src 'self' data: https://i.ytimg.com https://d33wubrfki0l68.cloudfront.net;
+      frame-src https://www.youtube-nocookie.com https://www.google.com;
+      connect-src 'self';
+      media-src 'none';
+      object-src 'none';
+      base-uri 'self';
+      form-action 'self';
+      frame-ancestors 'none';
+      upgrade-insecure-requests;
+    """
+
+# Cache static assets aggressively, HTML never
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"

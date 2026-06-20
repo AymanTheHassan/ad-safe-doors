@@ -44,14 +44,18 @@
         </div>
         <div class="form-card">
           <div class="form-success">Thanks! Your request has been received. We'll be in touch shortly. For urgent jobs, please call 0417 464 743.</div>
-          <form data-quote-form>
-            <div class="form-row">
-              <div class="field"><label for="name">Name *</label><input id="name" name="name" type="text" required></div>
-              <div class="field"><label for="phone">Phone *</label><input id="phone" name="phone" type="tel" required></div>
+          <div class="form-ratelimit" style="display:none;background:#fff3cd;border:1px solid #ffc107;color:#856404;padding:14px 18px;border-radius:9px;margin-bottom:18px;font-weight:600;">Please wait a moment before submitting again.</div>
+          <form data-quote-form="quote">
+            <div style="position:absolute;left:-9999px;top:-9999px;opacity:0;height:0;overflow:hidden" aria-hidden="true">
+              <label>Leave blank<input type="text" name="website" data-hp tabindex="-1" autocomplete="off"></label>
             </div>
             <div class="form-row">
-              <div class="field"><label for="email">Email *</label><input id="email" name="email" type="email" required></div>
-              <div class="field"><label for="suburb">Suburb</label><input id="suburb" name="suburb" type="text"></div>
+              <div class="field"><label for="name">Name *</label><input id="name" name="name" type="text" required maxlength="120" autocomplete="name"></div>
+              <div class="field"><label for="phone">Phone *</label><input id="phone" name="phone" type="tel" required maxlength="20" autocomplete="tel" pattern="[0-9+\s\-()]{6,20}"></div>
+            </div>
+            <div class="form-row">
+              <div class="field"><label for="email">Email *</label><input id="email" name="email" type="email" required maxlength="254" autocomplete="email"></div>
+              <div class="field"><label for="suburb">Suburb</label><input id="suburb" name="suburb" type="text" maxlength="100" autocomplete="address-level2"></div>
             </div>
             <div class="field">
               <label for="service">Service required</label>
@@ -63,7 +67,7 @@
                 <option>Not sure — need advice</option>
               </select>
             </div>
-            <div class="field"><label for="message">Tell us about your door *</label><textarea id="message" name="message" placeholder="e.g. My aluminium sliding door is hard to open and very noisy..." required></textarea></div>
+            <div class="field"><label for="message">Tell us about your door *</label><textarea id="message" name="message" placeholder="e.g. My aluminium sliding door is hard to open and very noisy..." required maxlength="1000"></textarea></div>
             <button type="submit" class="btn btn-primary btn-lg" style="width:100%;justify-content:center">Send My Free Quote Request</button>
             <p class="form-note" style="margin-top:12px;text-align:center">We respect your privacy and never share your details.</p>
           </form>

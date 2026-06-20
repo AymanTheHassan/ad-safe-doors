@@ -45,13 +45,17 @@
         <div class="form-card">
           <h3 style="margin-bottom:18px">Send us a message</h3>
           <div class="form-success">Thanks for your message! We'll get back to you shortly. For urgent jobs, please call 0417 464 743.</div>
-          <form data-quote-form>
-            <div class="form-row">
-              <div class="field"><label for="cname">Name *</label><input id="cname" name="name" type="text" required></div>
-              <div class="field"><label for="cphone">Phone *</label><input id="cphone" name="phone" type="tel" required></div>
+          <div class="form-ratelimit" style="display:none;background:#fff3cd;border:1px solid #ffc107;color:#856404;padding:14px 18px;border-radius:9px;margin-bottom:18px;font-weight:600;">Please wait a moment before submitting again.</div>
+          <form data-quote-form="contact">
+            <div style="position:absolute;left:-9999px;top:-9999px;opacity:0;height:0;overflow:hidden" aria-hidden="true">
+              <label>Leave blank<input type="text" name="company" data-hp tabindex="-1" autocomplete="off"></label>
             </div>
-            <div class="field"><label for="cemail">Email *</label><input id="cemail" name="email" type="email" required></div>
-            <div class="field"><label for="cmsg">Message *</label><textarea id="cmsg" name="message" placeholder="How can we help with your door?" required></textarea></div>
+            <div class="form-row">
+              <div class="field"><label for="cname">Name *</label><input id="cname" name="name" type="text" required maxlength="120" autocomplete="name"></div>
+              <div class="field"><label for="cphone">Phone *</label><input id="cphone" name="phone" type="tel" required maxlength="20" autocomplete="tel" pattern="[0-9+\s\-()]{6,20}"></div>
+            </div>
+            <div class="field"><label for="cemail">Email *</label><input id="cemail" name="email" type="email" required maxlength="254" autocomplete="email"></div>
+            <div class="field"><label for="cmsg">Message *</label><textarea id="cmsg" name="message" placeholder="How can we help with your door?" required maxlength="1000"></textarea></div>
             <button type="submit" class="btn btn-primary btn-lg" style="width:100%;justify-content:center">Send Message</button>
           </form>
         </div>
@@ -62,7 +66,7 @@
   <section class="section bg-soft" style="padding-top:0">
     <div class="container">
       <div style="border-radius:16px;overflow:hidden;box-shadow:var(--shadow-md)">
-        <iframe title="Adsafe Doors service area map" src="https://www.google.com/maps?q=-33.792986,151.000776&z=12&output=embed" width="100%" height="380" style="border:0;display:block" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-popups-to-escape-sandbox"></iframe>
+        <iframe title="Adsafe Doors service area map" src="https://www.google.com/maps?q=-33.792986,151.000776&z=12&output=embed" width="100%" height="380" style="border:0;display:block" loading="lazy" referrerpolicy="no-referrer-when-downgrade" sandbox="allow-scripts allow-same-origin"></iframe>
       </div>
     </div>
   </section>
