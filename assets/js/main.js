@@ -8,19 +8,7 @@
 
   /* ---------- Navigation model ---------- */
   var NAV = [
-    {
-      label: "Home", href: "index.html", key: "home",
-      children: [
-        { label: "Home", href: "index.html" },
-        { label: "Parramatta", href: "sliding-door-repairs-parramatta.html" },
-        { label: "Blacktown", href: "sliding-door-repairs-blacktown.html" },
-        { label: "Penrith", href: "sliding-door-repairs-penrith.html" },
-        { label: "Ryde", href: "sliding-door-repairs-ryde.html" },
-        { label: "Hills District", href: "sliding-door-repairs-hills-district.html" },
-        { label: "North Shore", href: "sliding-door-repairs-north-shore.html" },
-        { label: "Chatswood", href: "sliding-door-repairs-chatswood.html" }
-      ]
-    },
+    { label: "Home", href: "index.html", key: "home" },
     {
       label: "Services", href: "services.html", key: "services",
       children: [
@@ -29,6 +17,19 @@
         { label: "Door Closer Specialist", href: "door-closer-specialist.html" },
         { label: "Door Closers Sydney", href: "door-closers-sydney.html" },
         { label: "Door Closers Installation", href: "door-closers-installation.html" }
+      ]
+    },
+    {
+      label: "Service Areas", href: "service-areas.html", key: "areas",
+      children: [
+        { label: "All Service Areas", href: "service-areas.html" },
+        { label: "Parramatta", href: "sliding-door-repairs-parramatta.html" },
+        { label: "Blacktown", href: "sliding-door-repairs-blacktown.html" },
+        { label: "Penrith", href: "sliding-door-repairs-penrith.html" },
+        { label: "Ryde", href: "sliding-door-repairs-ryde.html" },
+        { label: "Hills District", href: "sliding-door-repairs-hills-district.html" },
+        { label: "North Shore", href: "sliding-door-repairs-north-shore.html" },
+        { label: "Chatswood", href: "sliding-door-repairs-chatswood.html" }
       ]
     },
     { label: "Free Quote", href: "free-quote.html", key: "quote" },
@@ -113,6 +114,7 @@
             '<li><a href="contact.html">Contact</a></li>' +
           "</ul>" +
           '<h4 style="margin-top:20px">Service Areas</h4><ul class="footer-links">' +
+            '<li><a href="service-areas.html">All Service Areas</a></li>' +
             '<li><a href="sliding-door-repairs-parramatta.html">Parramatta</a></li>' +
             '<li><a href="sliding-door-repairs-blacktown.html">Blacktown</a></li>' +
             '<li><a href="sliding-door-repairs-penrith.html">Penrith</a></li>' +
