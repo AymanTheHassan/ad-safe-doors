@@ -8,8 +8,110 @@
   <link rel="icon" href="assets/images/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://i.ytimg.com" crossorigin>
+  <link rel="preconnect" href="https://www.youtube-nocookie.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
+
+  <!-- Local SEO: LocalBusiness schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HomeAndConstructionBusiness",
+    "@id": "https://adsafedoors.com.au/#business",
+    "name": "Adsafe Doors",
+    "alternateName": "Adsafe Sliding Door Repairs Sydney",
+    "description": "Family-owned sliding door repair and door closer specialists servicing the Sydney metropolitan area since 1992.",
+    "url": "https://adsafedoors.com.au/",
+    "logo": "https://adsafedoors.com.au/assets/images/logo.png",
+    "image": "https://adsafedoors.com.au/assets/images/social.jpg",
+    "telephone": "+61417464743",
+    "email": "sales@adsafedoors.com.au",
+    "foundingDate": "1992",
+    "priceRange": "$$",
+    "currenciesAccepted": "AUD",
+    "slogan": "Repair, don't replace.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Sydney",
+      "addressRegion": "NSW",
+      "addressCountry": "AU"
+    },
+    "geo": { "@type": "GeoCoordinates", "latitude": -33.792986, "longitude": 151.000776 },
+    "hasMap": "https://www.google.com/maps/place/Adsafe+Doors/@-33.792986,151.000776,17z/data=!4m8!3m7!1s0x6b12a14ccc4ef369:0x1b123a8d83e48e6a!8m2!3d-33.792986!4d151.000776!9m1!1b1!16s%2Fg%2F1tdbr07m",
+    "areaServed": [
+      { "@type": "City", "name": "Sydney" },
+      { "@type": "Place", "name": "Parramatta" },
+      { "@type": "Place", "name": "Blacktown" },
+      { "@type": "Place", "name": "Penrith" },
+      { "@type": "Place", "name": "The Hills District" },
+      { "@type": "Place", "name": "Eastern Suburbs" },
+      { "@type": "Place", "name": "Ryde" }
+    ],
+    "openingHoursSpecification": [{
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+      "opens": "07:00",
+      "closes": "18:00"
+    }],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.7",
+      "reviewCount": "63",
+      "bestRating": "5"
+    },
+    "sameAs": [
+      "https://www.facebook.com/adsafedoors",
+      "https://www.youtube.com/@Adsafe1460/videos"
+    ]
+  }
+  </script>
+
+  <!-- Local SEO: page schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://adsafedoors.com.au/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Services",
+        "item": "https://adsafedoors.com.au/services.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Door Closer Specialist",
+        "item": "https://adsafedoors.com.au/door-closer-specialist.html"
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Door Closer Repair",
+    "name": "Door Closer Specialist Sydney",
+    "url": "https://adsafedoors.com.au/door-closer-specialist.html",
+    "description": "Specialist repair and adjustment of hydraulic surface-mounted, overhead transom and floor spring door closers for commercial and domestic doors in Sydney.",
+    "provider": {
+      "@id": "https://adsafedoors.com.au/#business"
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": "Sydney"
+    }
+  }
+  </script>
+  <noscript><style>[data-reveal]{opacity:1 !important;transform:none !important}</style></noscript>
 </head>
 <body data-page="services">
   <div id="site-header"></div>
@@ -23,8 +125,8 @@
   </section>
 
   <section class="section">
-    <div class="container split">
-      <div class="split-media"><img src="assets/images/door-closers.jpg" alt="Door closer specialist Sydney"></div>
+    <div class="container split" data-reveal>
+      <div class="split-media"><img loading="lazy" decoding="async" src="assets/images/door-closers.jpg" alt="Door closer specialist Sydney"></div>
       <div>
         <span class="eyebrow">Closer Experts</span>
         <h2>Expert door closer repairs</h2>
@@ -37,8 +139,8 @@
 
   <section class="section bg-soft">
     <div class="container">
-      <div class="text-center" style="max-width:680px;margin:0 auto 40px"><span class="eyebrow">Types We Service</span><h2>All major door closer types</h2></div>
-      <div class="grid grid-3">
+      <div class="text-center" style="max-width:680px;margin:0 auto 40px" data-reveal><span class="eyebrow">Types We Service</span><h2>All major door closer types</h2></div>
+      <div class="grid grid-3" data-reveal>
         <div class="card feature"><div class="card-icon">🔧</div><h3>Hydraulic Surface-Mounted</h3><p>The most common closers, fitted to the face of the door or frame. We repair leaks, sticking arms and adjust the closing speed.</p></div>
         <div class="card feature"><div class="card-icon">🚪</div><h3>Overhead Transom-Mounted</h3><p>Concealed closers mounted in the transom above the door. We service and adjust these for smooth, controlled closing.</p></div>
         <div class="card feature"><div class="card-icon">⬇️</div><h3>Floor Spring Closers</h3><p>Heavy-duty closers set into the floor, common on glass and entry doors. We repair and re-tension these for reliable operation.</p></div>
@@ -62,15 +164,26 @@
   </section>
 
   <section class="section bg-soft">
-    <div class="container"><div class="cta-band">
+    <div class="container"><div class="cta-band" data-reveal>
       <h2>Door closer playing up?</h2>
       <p>Talk to a Sydney door closer specialist today and we'll get it closing properly again.</p>
       <div class="cta-actions"><a class="btn btn-primary btn-lg" href="tel:0417464743">📞 Call 0417 464 743</a><a class="btn btn-ghost btn-lg" href="door-closers-installation.html">Need a New Closer?</a></div>
     </div></div>
   </section>
 
+  <!-- AREAS WE SERVE (interlinking) -->
+  <section class="section">
+    <div class="container">
+      <div class="text-center" style="max-width:720px;margin:0 auto" data-reveal>
+        <span class="eyebrow">Areas We Serve</span>
+        <h2>Local sliding door repairs across Sydney</h2>
+        <p>We come to you right across the Sydney metropolitan area. See our dedicated local pages for <a href="sliding-door-repairs-parramatta.html">sliding door repairs in Parramatta</a>, <a href="sliding-door-repairs-blacktown.html">Blacktown</a> and <a href="sliding-door-repairs-penrith.html">Stegbar sliding door repairs in Penrith</a>, or browse <a href="services.html">all our services</a>.</p>
+      </div>
+    </div>
+  </section>
+
   <div id="site-footer"></div>
-  <script src="assets/js/data.js"></script>
-  <script src="assets/js/main.js"></script>
+  <script src="assets/js/data.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
 </body>
 </html>

@@ -8,8 +8,87 @@
   <link rel="icon" href="assets/images/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://i.ytimg.com" crossorigin>
+  <link rel="preconnect" href="https://www.youtube-nocookie.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
+
+  <!-- Local SEO: LocalBusiness schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HomeAndConstructionBusiness",
+    "@id": "https://adsafedoors.com.au/#business",
+    "name": "Adsafe Doors",
+    "alternateName": "Adsafe Sliding Door Repairs Sydney",
+    "description": "Family-owned sliding door repair and door closer specialists servicing the Sydney metropolitan area since 1992.",
+    "url": "https://adsafedoors.com.au/",
+    "logo": "https://adsafedoors.com.au/assets/images/logo.png",
+    "image": "https://adsafedoors.com.au/assets/images/social.jpg",
+    "telephone": "+61417464743",
+    "email": "sales@adsafedoors.com.au",
+    "foundingDate": "1992",
+    "priceRange": "$$",
+    "currenciesAccepted": "AUD",
+    "slogan": "Repair, don't replace.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Sydney",
+      "addressRegion": "NSW",
+      "addressCountry": "AU"
+    },
+    "geo": { "@type": "GeoCoordinates", "latitude": -33.792986, "longitude": 151.000776 },
+    "hasMap": "https://www.google.com/maps/place/Adsafe+Doors/@-33.792986,151.000776,17z/data=!4m8!3m7!1s0x6b12a14ccc4ef369:0x1b123a8d83e48e6a!8m2!3d-33.792986!4d151.000776!9m1!1b1!16s%2Fg%2F1tdbr07m",
+    "areaServed": [
+      { "@type": "City", "name": "Sydney" },
+      { "@type": "Place", "name": "Parramatta" },
+      { "@type": "Place", "name": "Blacktown" },
+      { "@type": "Place", "name": "Penrith" },
+      { "@type": "Place", "name": "The Hills District" },
+      { "@type": "Place", "name": "Eastern Suburbs" },
+      { "@type": "Place", "name": "Ryde" }
+    ],
+    "openingHoursSpecification": [{
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+      "opens": "07:00",
+      "closes": "18:00"
+    }],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.7",
+      "reviewCount": "63",
+      "bestRating": "5"
+    },
+    "sameAs": [
+      "https://www.facebook.com/adsafedoors",
+      "https://www.youtube.com/@Adsafe1460/videos"
+    ]
+  }
+  </script>
+
+  <!-- Local SEO: page schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://adsafedoors.com.au/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Videos",
+        "item": "https://adsafedoors.com.au/videos.html"
+      }
+    ]
+  }
+  </script>
+  <noscript><style>[data-reveal]{opacity:1 !important;transform:none !important}</style></noscript>
 </head>
 <body data-page="videos">
   <div id="site-header"></div>
@@ -26,7 +105,7 @@
     <div class="container">
       <h2>Before &amp; After Repairs</h2>
       <p style="margin-bottom:28px;color:var(--muted)">Watch ordinary doors transformed into one-finger gliders.</p>
-      <div class="video-grid" data-videos="grid" data-cat="Before & After"></div>
+      <div class="video-grid" data-reveal data-videos="grid" data-cat="Before & After"></div>
     </div>
   </section>
 
@@ -34,7 +113,7 @@
     <div class="container">
       <h2>Door Brand Repairs</h2>
       <p style="margin-bottom:28px;color:var(--muted)">Stegbar, Wideline, Lidco, Wunderlich, G James, Ryloc and more.</p>
-      <div class="video-grid" data-videos="grid" data-cat="Door Brands"></div>
+      <div class="video-grid" data-reveal data-videos="grid" data-cat="Door Brands"></div>
     </div>
   </section>
 
@@ -42,7 +121,7 @@
     <div class="container">
       <h2>Tips &amp; Advice</h2>
       <p style="margin-bottom:28px;color:var(--muted)">Maintenance tips, repair vs replace, and how the experts do it.</p>
-      <div class="video-grid" data-videos="grid" data-cat="Tips & Advice"></div>
+      <div class="video-grid" data-reveal data-videos="grid" data-cat="Tips & Advice"></div>
     </div>
   </section>
 
@@ -50,13 +129,13 @@
     <div class="container">
       <h2>Customer Testimonials</h2>
       <p style="margin-bottom:28px;color:var(--muted)">Hear directly from happy Sydney customers.</p>
-      <div class="video-grid" data-videos="grid" data-cat="Testimonials"></div>
+      <div class="video-grid" data-reveal data-videos="grid" data-cat="Testimonials"></div>
       <div class="text-center" style="margin-top:36px"><a class="btn btn-blue" href="https://www.youtube.com/@Adsafe1460/videos" target="_blank" rel="noopener">▶ Visit Our YouTube Channel</a></div>
     </div>
   </section>
 
   <section class="section">
-    <div class="container"><div class="cta-band">
+    <div class="container"><div class="cta-band" data-reveal>
       <h2>Like what you see?</h2>
       <p>Let's get your door looking and sliding just as good. Book your repair today.</p>
       <div class="cta-actions"><a class="btn btn-primary btn-lg" href="tel:0417464743">📞 Call 0417 464 743</a><a class="btn btn-ghost btn-lg" href="free-quote.html">Free Quote</a></div>
@@ -64,7 +143,7 @@
   </section>
 
   <div id="site-footer"></div>
-  <script src="assets/js/data.js"></script>
-  <script src="assets/js/main.js"></script>
+  <script src="assets/js/data.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
 </body>
 </html>

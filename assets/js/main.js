@@ -13,7 +13,8 @@
       children: [
         { label: "Home", href: "index.html" },
         { label: "Parramatta", href: "sliding-door-repairs-parramatta.html" },
-        { label: "Blacktown", href: "sliding-door-repairs-blacktown.html" }
+        { label: "Blacktown", href: "sliding-door-repairs-blacktown.html" },
+        { label: "Penrith", href: "sliding-door-repairs-penrith.html" }
       ]
     },
     {
@@ -110,6 +111,7 @@
           '<h4 style="margin-top:20px">Service Areas</h4><ul class="footer-links">' +
             '<li><a href="sliding-door-repairs-parramatta.html">Parramatta</a></li>' +
             '<li><a href="sliding-door-repairs-blacktown.html">Blacktown</a></li>' +
+            '<li><a href="sliding-door-repairs-penrith.html">Penrith</a></li>' +
           "</ul></div>" +
           '<div><h4>Get In Touch</h4><ul class="footer-links footer-contact">' +
             '<li>📞 <a href="' + D.phoneHref + '">' + D.phone + "</a></li>" +
@@ -177,6 +179,26 @@
     if (cat) list = list.filter(function (v) { return v.cat === cat; });
     if (limit) list = list.slice(0, limit);
     if (mode === "grid") renderVideos(el, list);
+  });
+
+  /* ---------- Lazy YouTube facades (defer heavy iframes until click) ---------- */
+  document.querySelectorAll("[data-embed]").forEach(function (el) {
+    var id = el.getAttribute("data-embed");
+    var title = el.getAttribute("data-title") || "Play video";
+    el.setAttribute("role", "button");
+    el.setAttribute("tabindex", "0");
+    el.setAttribute("aria-label", "Play video: " + title);
+    el.innerHTML = '<img loading="lazy" decoding="async" src="' + thumb(id) + '" alt="' + title + '">' +
+      '<span class="play">' + playSvg + "</span>";
+    function load() {
+      el.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + id +
+        '?autoplay=1&rel=0" title="' + title +
+        '" allow="accelerated-rotation; autoplay; encrypted-media" allowfullscreen></iframe>';
+    }
+    el.addEventListener("click", load);
+    el.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); load(); }
+    });
   });
 
   /* ---------- Render reviews ---------- */
