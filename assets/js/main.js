@@ -14,7 +14,11 @@
         { label: "Home", href: "index.html" },
         { label: "Parramatta", href: "sliding-door-repairs-parramatta.html" },
         { label: "Blacktown", href: "sliding-door-repairs-blacktown.html" },
-        { label: "Penrith", href: "sliding-door-repairs-penrith.html" }
+        { label: "Penrith", href: "sliding-door-repairs-penrith.html" },
+        { label: "Ryde", href: "sliding-door-repairs-ryde.html" },
+        { label: "Hills District", href: "sliding-door-repairs-hills-district.html" },
+        { label: "North Shore", href: "sliding-door-repairs-north-shore.html" },
+        { label: "Chatswood", href: "sliding-door-repairs-chatswood.html" }
       ]
     },
     {
@@ -112,6 +116,10 @@
             '<li><a href="sliding-door-repairs-parramatta.html">Parramatta</a></li>' +
             '<li><a href="sliding-door-repairs-blacktown.html">Blacktown</a></li>' +
             '<li><a href="sliding-door-repairs-penrith.html">Penrith</a></li>' +
+            '<li><a href="sliding-door-repairs-ryde.html">Ryde</a></li>' +
+            '<li><a href="sliding-door-repairs-hills-district.html">Hills District</a></li>' +
+            '<li><a href="sliding-door-repairs-north-shore.html">North Shore</a></li>' +
+            '<li><a href="sliding-door-repairs-chatswood.html">Chatswood</a></li>' +
           "</ul></div>" +
           '<div><h4>Get In Touch</h4><ul class="footer-links footer-contact">' +
             '<li>📞 <a href="' + D.phoneHref + '">' + D.phone + "</a></li>" +
