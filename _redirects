@@ -1,4 +1,10 @@
-# Force HTTPS on all routes (Netlify handles this at the edge)
-http://adsafedoors.com.au/*  https://adsafedoors.com.au/:splat  301!
-http://www.adsafedoors.com.au/*  https://adsafedoors.com.au/:splat  301!
-https://www.adsafedoors.com.au/*  https://adsafedoors.com.au/:splat  301!
+# Force HTTPS + canonical apex domain (Netlify handles TLS at the edge)
+http://adsafeslidingdoorrepairs.com.au/*      https://adsafeslidingdoorrepairs.com.au/:splat  301!
+http://www.adsafeslidingdoorrepairs.com.au/*  https://adsafeslidingdoorrepairs.com.au/:splat  301!
+https://www.adsafeslidingdoorrepairs.com.au/* https://adsafeslidingdoorrepairs.com.au/:splat  301!
+
+# Redirect the legacy adsafedoors.com.au domain to the new primary (preserves old links/SEO)
+http://adsafedoors.com.au/*      https://adsafeslidingdoorrepairs.com.au/:splat  301!
+https://adsafedoors.com.au/*     https://adsafeslidingdoorrepairs.com.au/:splat  301!
+http://www.adsafedoors.com.au/*  https://adsafeslidingdoorrepairs.com.au/:splat  301!
+https://www.adsafedoors.com.au/* https://adsafeslidingdoorrepairs.com.au/:splat  301!

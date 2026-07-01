@@ -1,6 +1,6 @@
 User-agent: *
 Allow: /
-Sitemap: https://adsafedoors.com.au/sitemap.xml
+Sitemap: https://adsafeslidingdoorrepairs.com.au/sitemap.xml
 
 # Block crawlers from non-content paths
 Disallow: /netlify/
